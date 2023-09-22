@@ -49,7 +49,7 @@ function Contact() {
                     <textarea id="message" name="message" rows="4" placeholder="Your message here" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-[#00A3E1] bg-transparent" required></textarea>
                 </div>
                 <div class="flex justify-center">
-                    <button type="submit" class="w-[30%] border border-[#00A3E1] text-[#00A3E1] px-4 py-2 rounded-lg hover:bg-[#00A3E1] hover:text-black transition duration-300 ease-in-out uppercase tracking-widest">Send Message</button>
+                    <button type="submit" class="w-fit border border-[#00A3E1] text-[#00A3E1] px-4 py-2 rounded-lg hover:bg-[#00A3E1] hover:text-black transition duration-300 ease-in-out uppercase tracking-widest">Send Message</button>
                 </div>
             </form>
         </div>

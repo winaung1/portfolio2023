@@ -14,35 +14,30 @@ function Portfolio() {
       description: 'This is a work of hard, it includes everything you need. Real Estate',
       img: 'https://images.pexels.com/photos/6634662/pexels-photo-6634662.jpeg',
       skills: ['React', 'Tailwind', 'HTML', 'CSS', 'Firebase', 'Redux', 'Next Js'],
-      cn: ''
     },
     {
       name: 'Audio',
       description: 'This is a work of hard, it includes everything you need. Music',
       img: 'https://images.pexels.com/photos/8903270/pexels-photo-8903270.jpeg?auto=compress&cs=tinysrgb&w=600',
       skills: ['React', 'Tailwind', 'HTML', 'CSS', 'Firebase', 'Redux', 'Next Js'],
-      cn: 'col-span-2'
     },
     {
       name: 'Audio',
       description: 'This is a work of hard, it includes everything you need. Music',
       img: 'https://images.pexels.com/photos/6461324/pexels-photo-6461324.jpeg?auto=compress&cs=tinysrgb&w=600',
       skills: ['React', 'Tailwind', 'HTML', 'CSS', 'Firebase', 'Redux', 'Next Js'],
-      cn: ''
     },
     {
       name: 'Audio',
       description: 'This is a work of hard, it includes everything you need.',
       img: 'https://images.pexels.com/photos/6694722/pexels-photo-6694722.jpeg?auto=compress&cs=tinysrgb&w=600',
       skills: ['React', 'Tailwind', 'HTML', 'CSS', 'Firebase', 'Redux', 'Next Js'],
-      cn: ''
     },
     {
       name: 'Audio',
       description: 'This is a work of hard, it includes everything you need. E-commerce',
       img: 'https://images.pexels.com/photos/8293677/pexels-photo-8293677.jpeg?auto=compress&cs=tinysrgb&w=600',
       skills: ['React', 'Tailwind', 'HTML', 'CSS', 'Firebase', 'Redux', 'Next Js'],
-      cn: ''
     },
   
     {
@@ -50,7 +45,6 @@ function Portfolio() {
       description: 'This is a work of hard, it includes everything you need. Real Estate',
       img: 'https://images.pexels.com/photos/8293677/pexels-photo-8293677.jpeg?auto=compress&cs=tinysrgb&w=600',
       skills: ['React', 'Tailwind', 'HTML', 'CSS', 'Firebase', 'Redux', 'Next Js'],
-      cn: 'col-span-2'
     },
     
   ]
@@ -94,7 +88,7 @@ function Portfolio() {
                 <BsBriefcase/>
             </div>
             <hr className=''/> 
-            <div className='border-b pb-2 border-[#00A3E1] flex items-center space-x-4 rounded-full w-fit mx-auto my-10 px-4'>
+            <div className='flex flex-wrap gap-4 w-fit mx-auto my-10 px-4'>
              {tabs.map((tab, index) => {
               return <div className={tab.id == projectId ? 'bg-[#00A3E1] rounded-full w-fit px-4' : ''}>
                 <button onClick={() => handleShowProject(tab.keys, index)}>{tab.keys}</button>
@@ -103,7 +97,7 @@ function Portfolio() {
 
              }
             </div>
-            <div className='grid grid-cols-3 gap-4 items-center'>
+            <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 items-center'>
               <AnimatePresence>
               {portfolioData.filter(data => data.description.includes(item)).map((project, index) => {
                 if(project.description.includes(item)){

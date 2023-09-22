@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import Navbar from "./Navbar";
 import Home from "./components/Home/Home";
 import Sidebar from './components/Sidebar'
@@ -52,7 +52,7 @@ function App() {
 
   };
 
-
+  
   const values = {setShowSideBar, showSideBar, handleClickScroll, sideBarData, currentIndex}
 
   return (
