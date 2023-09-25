@@ -8,7 +8,7 @@ function Sidebar() {
 
   
   return (
-    <div className={showSideBar ? 'overflow-y-scroll z-[6000] transition-all duration-300 ease-linear fixed md:flex flex-col  gap-4 bg-[#17181B] h-screen w-[200px] md:left-0 top-0 text-gray-600' : ' -left-60 z-[6000] transition-all duration-300 ease-linear fixed md:flex flex-col gap-4 bg-[#17181B] h-screen w-[200px] md:left-0 top-0 text-gray-600'}>
+    <div className={showSideBar ? 'overflow-y-scroll z-[6000] transition-all duration-300 ease-linear fixed md:flex flex-col  gap-4 bg-[#17181B] h-screen w-[200px] md:left-0 top-0 text-gray-600' : ' -left-60 z-[6000] transition-all duration-300 ease-linear fixed md:flex flex-col gap-4 bg-[#17181B] h-screen w-[200px] md:left-0 top-0 text-gray-600 overflow-y-scroll'}>
     <div className='relative'>
       <img className=' object-cover h-40 w-full' src="https://st3.depositphotos.com/15648834/17930/v/450/depositphotos_179308458-stock-illustration-unknown-person-silhouette-profile-picture.jpg" alt="" />
       <div className='bg-[#00A3E1]/80 w-full absolute bottom-0 h-10'>

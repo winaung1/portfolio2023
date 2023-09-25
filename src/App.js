@@ -1,19 +1,17 @@
 import { createContext, useEffect, useState } from "react";
-import Navbar from "./Navbar";
-import Home from "./components/Home/Home";
-import Sidebar from './components/Sidebar'
-import About from "./components/About/About";
-import Resume from "./components/Resume/Resume";
-import Portfolio from "./components/Portfolio/Portfolio";
-import Contact from "./components/Contact/Contact";
 import {FaFacebook, FaGithub, FaHome, FaLinkedin, FaYoutube} from 'react-icons/fa'
 import {BsPerson, BsNewspaper, BsEnvelopeAt, BsBriefcase, BsEnvelope} from 'react-icons/bs'
 import {PiSuitcaseBold} from 'react-icons/pi'
+import Main from "./Main";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import PortfolioDetails from "./components/Portfolio/PortfolioDetails";
 
 export const AppContext = createContext()
 function App() {
   const [showSideBar, setShowSideBar] = useState(false)
   const [currentIndex, setCurrentIndex] = useState(1)
+  const [getId, setGetId] = useState('')
+  const [close, setClose] = useState(false);
   const sideBarData = [
     {
       id: 1,
@@ -53,18 +51,19 @@ function App() {
   };
 
   
-  const values = {setShowSideBar, showSideBar, handleClickScroll, sideBarData, currentIndex}
+  const values = {setShowSideBar, showSideBar, handleClickScroll, sideBarData, currentIndex, getId, setGetId, close, setClose}
 
   return (
     <div>
       <AppContext.Provider value={values}>
-      <Navbar/>
-      <Sidebar/>
-      <Home/>
-      <About/>
-      <Resume/>
-      <Portfolio/>
-      <Contact/>
+        <Main/>
+        <BrowserRouter>
+          <Routes>
+          <Route path="/" element={<Main />}>
+            <Route path="PortfolioDetails" element={<PortfolioDetails />} />
+          </Route>
+          </Routes>
+        </BrowserRouter>
       </AppContext.Provider>
     </div>
   );
