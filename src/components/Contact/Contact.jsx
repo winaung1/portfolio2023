@@ -1,5 +1,6 @@
+import emailjs from '@emailjs/browser';
 import React, { useRef, useState } from 'react'
-import { BsEnvelope } from 'react-icons/bs'
+import { BsEnvelope, BsFillCheckCircleFill } from 'react-icons/bs'
 import { AiFillPhone, AiOutlinePaperClip } from 'react-icons/ai'
 import { FaClipboardList, FaPaperPlane } from 'react-icons/fa'
 import { PiClipboardTextFill } from 'react-icons/pi'
@@ -7,8 +8,15 @@ import { PiClipboardTextFill } from 'react-icons/pi'
 function Contact() {
 
   const [successMessage, setSuccessMessage] = useState('')
+  const [sent, setSent] = useState(false)
+  const form = useRef();
+  const inputMessage = useRef();
+  const inputName = useRef();
+  const inputEmail = useRef();
   const emailRef = useRef()
   const phoneRef = useRef()
+
+
   function myFunction(val) {
     // Get the text field
     var text = val;
@@ -22,6 +30,27 @@ function Contact() {
     }, 2000)
     setSuccessMessage("Copied: " + text);
   }
+
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+    emailjs.sendForm("service_b1flkte","template_8bn17ud", form.current, "RTBwmNPYivvJUlOW6")
+    .then((result) => {
+      setSent(true)
+      console.log(result.text);
+  }, (error) => {
+      console.log(error.text);
+  });
+
+  setTimeout(() => {
+    inputEmail.current.value = ''
+    inputName.current.value = ''
+    inputMessage.current.value = ''
+    setSent(false)
+  }, 3000)
+
+  };
+
   return (
     <div id='section-5' className='overflow-y-scroll w-full mx-auto h-screen bg-[#2e2d2d] text-[#e1e1e1] pb-4'>
     <p className='transition-all duration-300 ease-in z[90000] fixed top-0 left-0 bg-[#00A3E1] text-white w-full text-center'>{successMessage}</p>
@@ -35,21 +64,22 @@ function Contact() {
             <h1 className='mx-auto text-2xl text-center my-10 uppercase border-[#00A3E1] rounded-xl border-b  w-fit px-2'>Let's Talk</h1>
             <div class="flex items-center justify-center">
         <div class="bg-transparent p-8 rounded-lg shadow-lg w-[80%] pt-0">
-            <form action="#" method="POST">
+            <form ref={form} onSubmit={sendEmail} >
                 <div class="mb-4">
                     <label for="name" class="block text-gray-600">Your Name</label>
-                    <input type="text" id="name" name="name" placeholder="John Doe" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-[#00A3E1] bg-transparent" required/>
+                    <input ref={inputName} type="text" id="name" name="name" placeholder="John Doe" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-[#00A3E1] bg-transparent" required/>
                 </div>
                 <div class="mb-4">
                     <label for="email" class="block text-gray-600">Email Address</label>
-                    <input type="email" id="email" name="email" placeholder="johndoe@example.com" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-[#00A3E1] bg-transparent" required/>
+                    <input ref={inputEmail} type="email" id="email" name="email" placeholder="johndoe@example.com" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-[#00A3E1] bg-transparent" required/>
                 </div>
                 <div class="mb-4">
                     <label for="message" class="block text-gray-600">Message</label>
-                    <textarea id="message" name="message" rows="4" placeholder="Your message here" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-[#00A3E1] bg-transparent" required></textarea>
+                    <textarea ref={inputMessage} id="message" name="message" rows="4" placeholder="Your message here" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-[#00A3E1] bg-transparent" required></textarea>
                 </div>
                 <div class="flex justify-center">
-                    <button type="submit" class="w-fit border border-[#00A3E1] text-[#00A3E1] px-4 py-2 rounded-lg hover:bg-[#00A3E1] hover:text-black transition duration-300 ease-in-out uppercase tracking-widest">Send Message</button>
+                    <button type="submit" class={sent ? "disable w-fit border border-green-500 text-[#00A3E1] px-4 py-2 rounded-lg  transition duration-300 ease-in-out uppercase tracking-widest" : "w-fit border border-[#00A3E1] text-[#00A3E1] px-4 py-2 rounded-lg hover:bg-[#00A3E1] hover:text-black transition duration-300 ease-in-out uppercase tracking-widest"}>
+                      {sent ? <div className='text-green-500 transition-all duration-300 ease-linear flex items-center space-x-1'><p>Message Sent</p><BsFillCheckCircleFill className='text-green-500'/></div> : 'Send Message'}</button>
                 </div>
             </form>
         </div>

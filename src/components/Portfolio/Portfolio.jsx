@@ -184,7 +184,7 @@ function Portfolio() {
               <div className={close ? "z-[960000] fixed top-0 left-0 bg-[#2e2d2d] text-[#e1e1e1] w-full h-screen overflow-y-scroll transition-all duration-300 ease-linear opacity-1" : "opacity-0 z-[960000] fixed top-0 -right-[6000px] bg-[#2e2d2d] text-[#e1e1e1] w-full h-screen overflow-y-scroll transition-all duration-300 ease-linear"}>
                 <div className="max-w-6xl mx-auto">
 
-                <button onClick={() => setClose(false)} className="fixed top-2 right-4">X</button>
+                <button onClick={() => setClose(false)} className="fixed top-4 right-10">X</button>
                 </div>
                 <div className="flex flex-col items-center justify-center">
                  {portfolioData.map(portfolioItem => {
