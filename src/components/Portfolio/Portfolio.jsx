@@ -107,6 +107,23 @@ function Portfolio() {
       img: "/musicapp.png",
       link: "https://musicappwin.vercel.app/",
     },
+    {
+      id: 5,
+      name: 'Agency Website',
+      description:
+        "Agency Website for agency a company located in Utah started by a friend of mine.",
+      logoOne: <FaReact />,
+      logoTwo: <FaCss3 />,
+      logoFour: <SiTailwindcss />,
+      logoThree: <FaHtml5 />,
+      cn: "w-fit h-80 object-contain  drop-shadow-2xl",
+      colorOne: "text-[#EBB943]",
+      colorTwo: "text-blue-500",
+      colorThree: "text-orange-500",
+      colorFour: "text-green-200",
+      img: "/agency.png",
+      link: "https://businessone.vercel.app/",
+    },
   ];
 
   const tabs = [
@@ -129,6 +146,10 @@ function Portfolio() {
     {
       id: 5,
       keys: "Travel",
+    },
+    {
+      id: 6,
+      keys: "Agency",
     },
   ];
 

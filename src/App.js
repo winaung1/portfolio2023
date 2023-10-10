@@ -9,6 +9,8 @@ import PortfolioDetails from "./components/Portfolio/PortfolioDetails";
 export const AppContext = createContext()
 function App() {
   const [showSideBar, setShowSideBar] = useState(false)
+  const [showSlide, setShowSlide] = useState(false)
+  const [showThisSlide, setShowThisSlide] = useState(null)
   const [currentIndex, setCurrentIndex] = useState(1)
   const [getId, setGetId] = useState('')
   const [close, setClose] = useState(false);
@@ -45,7 +47,8 @@ function App() {
       // 👇 Will scroll smoothly to the top of the next section
       element.scrollIntoView({ behavior: 'smooth' });
     }
-
+    setShowSlide(true)
+    setShowThisSlide(element)
     setCurrentIndex(index)
 
   };
@@ -57,13 +60,6 @@ function App() {
     <div>
       <AppContext.Provider value={values}>
         <Main/>
-        <BrowserRouter>
-          <Routes>
-          <Route path="/" element={<Main />}>
-            <Route path="PortfolioDetails" element={<PortfolioDetails />} />
-          </Route>
-          </Routes>
-        </BrowserRouter>
       </AppContext.Provider>
     </div>
   );
